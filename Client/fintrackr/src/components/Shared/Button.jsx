@@ -3,7 +3,8 @@ const Button = ({ children, variant = "primary", className = "" }) => {
 
   const variantStyles = {
     primary: "bg-secondary text-white hover:bg-btn-color",
-    secondary: "bg-customBtn text-secondary text-white hover:bg-gray-700",
+    secondary:
+      "bg-customBtn text-white text-white rounded-s-sm rounded-tr-xl px-2 py-2 ",
   };
 
   return (
