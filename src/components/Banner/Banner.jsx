@@ -2,7 +2,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import Button from "../Shared/Button";
 const Banner = () => {
   return (
-    <div className="text-black p-4 place-items-center">
+    <div className="text-white p-4 place-items-center">
       <div className="flex flex-col md:flex-row justify-center lg:justify-between items-center gap-1 md:gap-6 lg:gap-7 xl:gap-9  2xl:gap-20 text-center ">
         <div className="text-3xl md:text-4xl lg:text-5xl 2xl:text-8xl">
           <h1>

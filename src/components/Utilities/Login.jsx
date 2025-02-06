@@ -11,6 +11,7 @@ import { useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "../../components/Shared/Button";
+import { useForm } from "react-hook-form";
 
 //for custom theme
 const darkTheme = createTheme({
@@ -58,9 +59,8 @@ const Login = () => {
     event.preventDefault();
   };
 
-  const handleOnClick = () => {
-    console.log("checked");
-  };
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => console.log(data);
 
   return (
     <div className="bg-[url('/bg.svg')] bg-cover bg-center bg-no-repeat min-h-screen relative z-10">
@@ -69,8 +69,16 @@ const Login = () => {
         <div className="text-white bg-slate-800  rounded-lg shadow-lg w-96 p-8">
           <h1 className="text-center text-4xl">Login</h1>
           <ThemeProvider theme={darkTheme}>
-            <div className="flex flex-col mt-2 text-white gap-5">
-              <TextField id="outlined-basic" label="Email" variant="outlined" />
+            <form
+              className="flex flex-col mt-2 text-white gap-5"
+              onSubmit={handleSubmit(onSubmit)}
+            >
+              <TextField
+                id="outlined-basic"
+                label="Email"
+                variant="outlined"
+                {...register("email")}
+              />
               <FormControl variant="outlined">
                 <InputLabel htmlFor="outlined-adornment-password">
                   Password
@@ -96,15 +104,24 @@ const Login = () => {
                     </InputAdornment>
                   }
                   label="Password"
+                  {...register("password", {
+                    required: "Password is required",
+                    pattern: {
+                      value:
+                        /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                      message:
+                        "Password must contain at least 8 characters, one uppercase, one lowercase, one number, and one special character.",
+                    },
+                  })}
                 />
               </FormControl>
-              <Button onClick={handleOnClick}>log in</Button>
+              <Button type="submit">log in</Button>
               <label className="label">
                 <a href="/" className="label-text-alt link link-hover">
                   Forgot password?
                 </a>
               </label>
-            </div>
+            </form>
           </ThemeProvider>
         </div>
       </div>
