@@ -10,8 +10,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import Button from "../../components/Shared/Button";
+import Button from "@/components/Shared/Button";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 //for custom theme
 const darkTheme = createTheme({
@@ -66,7 +67,7 @@ const Login = () => {
     <div className="bg-[url('/bg.svg')] bg-cover bg-center bg-no-repeat min-h-screen relative z-10">
       {/* <div className=" absolute top-0 left-0 w-full h-screen bg-black opacity-50 -z-20 "></div> */}
       <div className=" flex items-center justify-center h-screen">
-        <div className="text-white bg-slate-800  rounded-lg shadow-lg w-96 p-8">
+        <div className="text-white bg-slate-800  rounded-lg shadow-lg w-2/6 p-8">
           <h1 className="text-center text-4xl">Login</h1>
           <ThemeProvider theme={darkTheme}>
             <form
@@ -77,7 +78,9 @@ const Login = () => {
                 id="outlined-basic"
                 label="Email"
                 variant="outlined"
-                {...register("email")}
+                {...register("email", {
+                  required: "Email is required",
+                })}
               />
               <FormControl variant="outlined">
                 <InputLabel htmlFor="outlined-adornment-password">
@@ -118,11 +121,17 @@ const Login = () => {
               <Button type="submit">log in</Button>
               <label className="label">
                 <a href="/" className="label-text-alt link link-hover">
-                  Forgot password?
+                  Forgot password ?
                 </a>
               </label>
             </form>
           </ThemeProvider>
+          <label className="label mt-5">
+            <Link to="/signup" className="text-base link link-hover ">
+              New to FinTrackr ?
+              <span className="text-blue-400"> Sign up now</span>
+            </Link>
+          </label>
         </div>
       </div>
     </div>

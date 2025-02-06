@@ -6,6 +6,7 @@ const Home = lazy(() => import("@/components/Home/Home"));
 const ErrorPage = lazy(() => import("@/components/Shared/ErrorPage"));
 const Login = lazy(() => import("@/components/Utilities/Login"));
 const Main = lazy(() => import("@/Layout/Main"));
+const SignUp = lazy(() => import("@/components/Utilities/Signup"));
 
 // Suspense Wrapper Function
 const Loadable = (Component) => (
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: Loadable(Login),
+      },
+      {
+        path: "/signup",
+        element: Loadable(SignUp),
       },
     ],
   },
