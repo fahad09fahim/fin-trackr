@@ -121,7 +121,7 @@ const Login = () => {
               <Button type="submit">log in</Button>
               <label className="label">
                 <a href="/" className="label-text-alt link link-hover">
-                  Forgot password ?
+                  Forgot password?
                 </a>
               </label>
             </form>

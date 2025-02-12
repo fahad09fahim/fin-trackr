@@ -1,9 +1,9 @@
-
+import img from "@/assets/Group.svg";
 
 const ErrorPage = () => {
   return (
-    <div>
-      <h1>404 not found</h1>
+    <div className="min-h-full place-items-center">
+      <img src={img} alt="" />
     </div>
   );
 };

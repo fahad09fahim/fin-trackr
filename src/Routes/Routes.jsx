@@ -1,9 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import ErrorPage from "@/components/Shared/ErrorPage";
 
 // Lazy Load Components
 const Home = lazy(() => import("@/components/Home/Home"));
-const ErrorPage = lazy(() => import("@/components/Shared/ErrorPage"));
+
 const Login = lazy(() => import("@/components/Utilities/Login"));
 const Main = lazy(() => import("@/Layout/Main"));
 const SignUp = lazy(() => import("@/components/Utilities/Signup"));
@@ -25,7 +26,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: Loadable(Main),
-    errorElement: Loadable(ErrorPage),
+
     children: [
       {
         path: "/",
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: Loadable(SignUp),
+      },
+      {
+        path: "*",
+        element: <ErrorPage />,
       },
     ],
   },
