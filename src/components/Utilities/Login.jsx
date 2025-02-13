@@ -118,6 +118,7 @@ const Login = () => {
                   })}
                 />
               </FormControl>
+
               <Button type="submit">log in</Button>
               <label className="label">
                 <a href="/" className="label-text-alt link link-hover">

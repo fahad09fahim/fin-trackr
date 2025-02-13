@@ -1,13 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import ErrorPage from "@/components/Shared/ErrorPage";
+import Main from "@/Layout/Main";
+import Login from "@/components/Utilities/Login";
+import Signup from "@/components/Utilities/Signup";
 
 // Lazy Load Components
 const Home = lazy(() => import("@/components/Home/Home"));
-
-const Login = lazy(() => import("@/components/Utilities/Login"));
-const Main = lazy(() => import("@/Layout/Main"));
-const SignUp = lazy(() => import("@/components/Utilities/Signup"));
 
 // Suspense Wrapper Function
 const Loadable = (Component) => (
@@ -25,7 +24,7 @@ const Loadable = (Component) => (
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: Loadable(Main),
+    element: <Main />,
 
     children: [
       {
@@ -34,11 +33,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: Loadable(Login),
+        element: <Login />,
       },
       {
         path: "/signup",
-        element: Loadable(SignUp),
+        element: <Signup />,
       },
       {
         path: "*",
