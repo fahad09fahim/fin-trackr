@@ -7,12 +7,13 @@ import {
   TextField,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "@/components/Shared/Button";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "@/Provider/AuthProvider";
 
 //for custom theme
 const darkTheme = createTheme({
@@ -60,8 +61,14 @@ const Login = () => {
     event.preventDefault();
   };
 
+  const { signIn } = useContext(AuthContext);
+
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    signIn(data.email, data.password).then(() => {
+      console.log("User signed in successfully!");
+    });
+  };
 
   return (
     <div className="bg-[url('/bg.svg')] bg-cover bg-center bg-no-repeat min-h-screen relative z-10">
