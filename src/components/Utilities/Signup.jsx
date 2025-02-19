@@ -1,10 +1,11 @@
-import React from "react";
+import { useContext } from "react";
 import { TextField } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Button from "@/components/Shared/Button";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "@/Provider/AuthProvider";
 
 //for custom theme
 const darkTheme = createTheme({
@@ -39,8 +40,13 @@ const darkTheme = createTheme({
   },
 });
 const Signup = () => {
+  const { createUser } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    createUser(data.email, data.password).then((result) => {
+      console.log("User Created successfully!", result);
+    });
+  };
   return (
     <div className="bg-[url('/bg.svg')] bg-cover bg-center bg-no-repeat min-h-screen relative z-10">
       {/* <div className=" absolute top-0 left-0 w-full h-screen bg-black opacity-50 -z-20 "></div> */}

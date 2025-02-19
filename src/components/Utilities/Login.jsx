@@ -65,8 +65,8 @@ const Login = () => {
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    signIn(data.email, data.password).then(() => {
-      console.log("User signed in successfully!");
+    signIn(data.email, data.password).then((result) => {
+      console.log("User signed in successfully!", result);
     });
   };
 
